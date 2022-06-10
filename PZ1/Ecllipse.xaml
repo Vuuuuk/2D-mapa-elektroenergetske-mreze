@@ -1,0 +1,227 @@
+﻿<Window x:Class="PZ1.Ecllipse"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PZ1"
+        mc:Ignorable="d"
+        Title="Ecllipse" Height="500" Width="900"
+        Background="#212121"
+        WindowStyle="None" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Window.Resources>
+
+        <!-- DUGMIC EFEKAT -->
+
+        <Style x:Key="btn_efekat" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="btn_okvir" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- DUGMIC EFEKAT -->
+
+    </Window.Resources>
+
+    <Grid>
+
+        <!-- MENI -->
+
+        <Button x:Name="btn_exit" 
+                Style="{StaticResource btn_efekat}"
+                Width="42" Height="42" Margin="856,1,2,457"
+                Background="Transparent"
+                Click="btn_exit_Click">
+            <Image Source="Assets\Menu\btn_menu_exit.png"/>
+        </Button>
+
+        <Button x:Name="btn_draw" 
+                Style="{StaticResource btn_efekat}"
+                Width="42" Height="42" Margin="0,1,858,457"
+                Background="Transparent"
+                Click="btn_draw_Click">
+            <Image Source="Assets\Menu\btn_menu_draw.png"/>
+        </Button>
+
+        <!-- MENI -->
+
+        <!-- CONTENT -->
+
+        <Label
+        x:Name="lbl_ellipse_width"
+        FontSize="18"
+        Margin="219,73,611,391"
+        Foreground="#E0E0E0"
+        Content="Width:"/>
+
+        <TextBox 
+        x:Name="txt_ellipse_width"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="404,65,209,403"
+        TextWrapping="Wrap"/>
+
+        <Label
+        x:Name="lbl_ellipse_height"
+        FontSize="18"
+        Margin="219,125,611,339"
+        Foreground="#E0E0E0"
+        Content="Height:"/>
+
+        <TextBox 
+        x:Name="txt_ellipse_height"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="404,117,208,351"
+        TextWrapping="Wrap"/>
+
+        <Label
+        x:Name="lbl_border_thickness"
+        FontSize="18"
+        Margin="223,176,531,288"
+        Foreground="#E0E0E0"
+        Content="Border thickness:"/>
+
+        <TextBox
+        x:Name="txt_border_thickness"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="404,173,209,295"
+        TextWrapping="Wrap"/>
+
+        <Label
+        x:Name="lbl_border_color"
+        FontSize="18"
+        Margin="223,231,531,233"
+        Foreground="#E0E0E0"
+        Content="Border color:"/>
+
+        <ComboBox
+        x:Name="cmb_border_color"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="404,228,209,240"
+        Width="287" Height="32">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Background="#E0E0E0">
+                        <Rectangle Width="50" Height="50" Fill="{Binding Name}"/>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label
+        x:Name="lbl_ellipse_color"
+        FontSize="18"
+        Margin="223,285,531,179"
+        Foreground="#E0E0E0"
+        Content="Ellipse color:"/>
+
+        <ComboBox
+        x:Name="cmb_ellipse_color"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="405,282,208,186"
+        Width="287" Height="32">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Background="#E0E0E0">
+                        <Rectangle Width="50" Height="50" Fill="{Binding Name}"/>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label
+        x:Name="lbl_text"
+        FontSize="18"
+        Margin="223,332,531,132"
+        Foreground="#E0E0E0"
+        Content="Ellipse text:"/>
+
+        <TextBox
+        x:Name="txt_ellipse_text"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="405,334,208,134"
+        TextWrapping="Wrap"/>
+
+        <Label
+        x:Name="lbl_text_color"
+        FontSize="18"
+        Margin="223,383,531,81"
+        Foreground="#E0E0E0"
+        Content="Text color:"/>
+
+        <ComboBox
+        x:Name="cmb_text_color"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"   
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="405,385,208,83"
+        Width="287" Height="32">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal"
+                                Background="#E0E0E0">
+                        <Rectangle Width="50" Height="50" Fill="{Binding Name}"/>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label
+        x:Name="lbl_text_size"
+        FontSize="18"
+        Margin="223,435,531,29"
+        Foreground="#E0E0E0"
+        Content="Text size:"/>
+
+        <TextBox
+        x:Name="txt_ellipse_text_size"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  
+        FontSize="13"
+        Background="#E0E0E0"
+        Foreground="#212121"
+        Margin="405,437,208,31"
+        TextWrapping="Wrap"/>
+
+        <!-- CONTENT -->
+
+    </Grid>
+
+</Window>
